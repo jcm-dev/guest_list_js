@@ -11,7 +11,7 @@ loadEventListeners();
 // LISTNER CALL FUNCTION
 function loadEventListeners(){
 
-  document.addEventListener('DOMContentLoaded', getTasks);
+  document.addEventListener('DOMContentLoaded', getGuests);
   UIguestForm.addEventListener('submit', addGuest);
   UIguestList.addEventListener('click', removeGuest);
   UIclearBtn.addEventListener('click', clearGuests);
@@ -88,4 +88,41 @@ function filterGuests(e){
       guest.style.display = 'none';
     }
   });
+}
+
+// GET TASKS FUNCTION
+function getGuests(){
+  // create empty variable to store localStorage
+  // guestList
+  let guests;
+  // test if localStorage contains any guests
+  // if not, then assign empty array to guests var
+  // else, assign found list to guests var
+  // converting the items to an array of objects
+  if(localStorage.getItem('guests') === null){
+    guests = [];
+  } else {
+    guests = JSON.parse(localStorage.getItem('guests'));
+  }
+
+  guests.forEach(function(guest){
+    // create empty <li>
+  const li = document.createElement('li');
+  // assign empty <li> the collection-item class
+  li.className = 'collection-item';
+  // create and insert text node to empty <li>
+  // with the value of user input
+  li.appendChild(document.createTextNode(guest));
+  // create empty <a>
+  const link = document.createElement('a');
+  // assign empty <a> the delete-item and secondary-content class
+  link.className = 'delete-item secondary-content';
+  // insert <i> tag to empty link and assign fontawesome icon classes
+  link.innerHTML = '<i class="fa fa-remove"></i>';
+  // append the link to the empty <li>
+  li.appendChild(link);
+  // append the newly appeneded <li> to the <ul>
+  UIguestList.appendChild(li);
+  });
+
 }
