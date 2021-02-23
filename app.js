@@ -14,6 +14,7 @@ function loadEventListeners(){
   UIguestForm.addEventListener('submit', addGuest);
   UIguestList.addEventListener('click', removeGuest);
   UIclearBtn.addEventListener('click', clearGuests);
+  UIfilter.addEventListener('keyup', filterGuests);
 }
 
 // ADD GUEST FUNCTION
