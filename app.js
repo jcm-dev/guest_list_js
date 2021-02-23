@@ -11,7 +11,7 @@ loadEventListeners();
 // LISTNER CALL FUNCTION
 function loadEventListeners(){
 
-  
+  UIguestForm.addEventListener('submit', addGuest);
 }
 
 // ADD GUEST FUNCTION
