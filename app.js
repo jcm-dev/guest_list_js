@@ -58,3 +58,12 @@ function removeGuest(e){
   }
 }
 
+// CLEAR GUEST FUNCTION
+function clearGuests(){
+  // while loop testing if the guestList contains a child in
+  // position 1 and if so removing it until none are left
+  while (UIguestList.firstChild){
+    UIguestList.removeChild(UIguestList.firstChild);
+  }
+}
+
