@@ -1,6 +1,15 @@
-// grab ui elements and set to variables
+// UI VARIABLES
 const UIguestForm = document.querySelector('#guest-form');
-const UIguestList = docuemnt.querySelector('collection');
+const UIguestList = document.querySelector('.collection');
 const UIclearBtn = document.querySelector('.clear-guests');
 const UIfilter = document.querySelector('#filter');
-const taskInput = document.querySelector('#guest');
+const UIguestInput = document.querySelector('#guest');
+
+// LISTENER LOAD CALL
+loadEventListeners();
+
+// LISTNER CALL FUNCTION
+function loadEventListeners(){
+
+}
+
