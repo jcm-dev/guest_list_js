@@ -13,6 +13,7 @@ function loadEventListeners(){
 
   UIguestForm.addEventListener('submit', addGuest);
   UIguestList.addEventListener('click', removeGuest);
+  UIclearBtn.addEventListener('click', clearGuests);
 }
 
 // ADD GUEST FUNCTION
@@ -56,3 +57,4 @@ function removeGuest(e){
     }
   }
 }
+
