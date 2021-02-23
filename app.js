@@ -43,7 +43,8 @@ function addGuest(e){
   // append the newly appeneded <li> to the <ul>
   UIguestList.appendChild(li);
 
-
+  // store guest in local storage
+  storeGuestLocal(UIguestInput.value);
 
   // clear input box after each entry
   UIguestInput.value = '';
@@ -90,13 +91,14 @@ function filterGuests(e){
   });
 }
 
-// GET TASKS FUNCTION
+// GET GUESTS FUNCTION
 function getGuests(){
   // create empty variable to store localStorage
   // guestList
   let guests;
   // test if localStorage contains any guests
   // if not, then assign empty array to guests var
+  // to allow new guests to be added
   // else, assign found list to guests var
   // converting the items to an array of objects
   if(localStorage.getItem('guests') === null){
@@ -105,6 +107,8 @@ function getGuests(){
     guests = JSON.parse(localStorage.getItem('guests'));
   }
 
+  // loop through each guest found
+  // and append to the guestList
   guests.forEach(function(guest){
     // create empty <li>
   const li = document.createElement('li');
@@ -125,4 +129,16 @@ function getGuests(){
   UIguestList.appendChild(li);
   });
 
+}
+
+// STORE GUESTS FUNCTION
+function storeGuestLocal(guest){
+  let guests;
+  if(localStorage.getItem('guests') === null){
+    guests = [];
+  }else {
+    guests = JSON.parse(localStorage.getItem('guests'));
+  }
+  guests.push(guest);
+  localStorage.setItem('guests', JSON.stringify(guests));
 }
