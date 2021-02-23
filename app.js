@@ -12,6 +12,7 @@ loadEventListeners();
 function loadEventListeners(){
 
   UIguestForm.addEventListener('submit', addGuest);
+  UIguestList.addEventListener('click', removeGuest);
 }
 
 // ADD GUEST FUNCTION
@@ -47,9 +48,11 @@ function addGuest(e){
   e.preventDefault();
 }
 
-// REMOVE TASK GUEST
+// REMOVE GUEST FUNCTION
 function removeGuest(e){
-  if (e.target.parentElement.classList.contains('delete-itm')) {
-    
+  if (e.target.parentElement.classList.contains('delete-item')) {
+  if (confirm('Are you sure?')){
+    e.target.parentElement.parentElement.remove();
+    }
   }
 }
