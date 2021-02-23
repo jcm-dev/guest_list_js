@@ -54,9 +54,13 @@ function addGuest(e){
 
 // REMOVE GUEST FUNCTION
 function removeGuest(e){
+  // tests if item clicked contains 'delete-item class
+  // if so, delete item prompting user approval
   if (e.target.parentElement.classList.contains('delete-item')) {
   if (confirm('Are you sure?')){
     e.target.parentElement.parentElement.remove();
+    // also removing the item from local storage
+    removeGuestLocal(e.target.parentElement.parentElement);
     }
   }
 }
@@ -70,6 +74,7 @@ function clearGuests(){
   }
 }
 
+// FILTER GUESTS FUNCTION
 function filterGuests(e){
   // grabbing filter input box value, converting it to toLowerCase
   //and assigning it to variable filterText 
@@ -131,8 +136,14 @@ function getGuests(){
 
 }
 
-// STORE GUESTS FUNCTION
+// STORE GUESTS LOCAL FUNCTION
 function storeGuestLocal(guest){
+  // create temp variable to hold local storage items
+  // if local storage contains no items, set empty
+  // array to local storage as a placeholdr
+  // else, assign and parse local list to temp variable
+  // then push the guest passed in to this list and then
+  // parse back to string to store in local storage
   let guests;
   if(localStorage.getItem('guests') === null){
     guests = [];
@@ -140,5 +151,22 @@ function storeGuestLocal(guest){
     guests = JSON.parse(localStorage.getItem('guests'));
   }
   guests.push(guest);
+  localStorage.setItem('guests', JSON.stringify(guests));
+}
+
+// REMOVE GUESTS LOCAL FUNCTION
+function removeGuestLocal(guestItem){
+  let guests;
+  if(localStorage.getItem('guests') === null){
+    guests = [];
+  }else{
+    guests = JSON.parse(localStorage.getItem('guests'));
+  }
+
+  guests.forEach(function(guest, index){
+    if(guestItem.textContent === guest){
+      guests.splice(index, 1);
+    }
+  });
   localStorage.setItem('guests', JSON.stringify(guests));
 }
