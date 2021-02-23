@@ -46,3 +46,10 @@ function addGuest(e){
 
   e.preventDefault();
 }
+
+// REMOVE TASK GUEST
+function removeGuest(e){
+  if (e.target.parentElement.classList.contains('delete-itm')) {
+    
+  }
+}
