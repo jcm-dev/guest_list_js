@@ -11,6 +11,7 @@ loadEventListeners();
 // LISTNER CALL FUNCTION
 function loadEventListeners(){
 
+  document.addEventListener('DOMContentLoaded', getTasks);
   UIguestForm.addEventListener('submit', addGuest);
   UIguestList.addEventListener('click', removeGuest);
   UIclearBtn.addEventListener('click', clearGuests);
