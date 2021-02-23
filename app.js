@@ -23,7 +23,7 @@ function addGuest(e){
   // test input box for value
   if (UIguestInput.value === '') {
     alert ('Add a guest');
-  }
+  } else {
 
   // create empty <li>
   const li = document.createElement('li');
@@ -45,7 +45,7 @@ function addGuest(e){
 
   // store guest in local storage
   storeGuestLocal(UIguestInput.value);
-
+  }
   // clear input box after each entry
   UIguestInput.value = '';
 
@@ -72,6 +72,8 @@ function clearGuests(){
   while (UIguestList.firstChild){
     UIguestList.removeChild(UIguestList.firstChild);
   }
+  // clear all from local storage
+  clearGuestsLocal();
 }
 
 // FILTER GUESTS FUNCTION
@@ -156,6 +158,12 @@ function storeGuestLocal(guest){
 
 // REMOVE GUESTS LOCAL FUNCTION
 function removeGuestLocal(guestItem){
+  // create temp variable to hold local storage guests
+  // if local storage does not have guests assign empty
+  // array as placeholder 
+  // else parse to object array and test each index against
+  // guestItem, if match then remove from object array and
+  // send back to local storage
   let guests;
   if(localStorage.getItem('guests') === null){
     guests = [];
@@ -169,4 +177,9 @@ function removeGuestLocal(guestItem){
     }
   });
   localStorage.setItem('guests', JSON.stringify(guests));
+}
+
+// CLEAR GUESTS LOCAL
+function clearGuestsLocal(){
+  localStorage.clear();
 }
