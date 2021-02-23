@@ -68,3 +68,18 @@ function clearGuests(){
   }
 }
 
+function filterGuests(e){
+  // grabbing filter input box value, converting it to toLowerCase
+  //and assigning it to variable filterText 
+  const filterText = e.target.value.toLowerCase();
+
+  document.querySelectorAll('.collection-item').forEach(function(guest){
+    const guestItem = guest.firstChild.textContent;
+
+    if(guestItem.toLowerCase().indexOf(filterText) != -1){
+      guest.style.display = 'block';
+    } else {
+      guest.style.display = 'none';
+    }
+  });
+}
