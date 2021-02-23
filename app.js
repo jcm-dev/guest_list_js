@@ -72,10 +72,15 @@ function filterGuests(e){
   // grabbing filter input box value, converting it to toLowerCase
   //and assigning it to variable filterText 
   const filterText = e.target.value.toLowerCase();
-
+  // grabbing all elements with .collection-item class
+  // and looping through them temp assigning the iteration value
+  // to guestItem variable
   document.querySelectorAll('.collection-item').forEach(function(guest){
     const guestItem = guest.firstChild.textContent;
-
+    // converting guestItem to lower case and
+    // test if the guestItem contains the filterText input
+    // if it does then keep the guestItem displayed
+    // if it does not then hide the guestItem
     if(guestItem.toLowerCase().indexOf(filterText) != -1){
       guest.style.display = 'block';
     } else {
