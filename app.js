@@ -1,9 +1,9 @@
 // UI VARIABLES
-const UIguestForm = document.querySelector('#guest-form');
-const UIguestList = document.querySelector('.collection');
-const UIclearBtn = document.querySelector('.clear-guests');
-const UIfilter = document.querySelector('#filter');
-const UIguestInput = document.querySelector('#guest');
+const UIguestForm = document.querySelector('#guest-form'),
+      UIguestList = document.querySelector('.collection'),
+      UIclearBtn = document.querySelector('.clear-guests'),
+      UIfilter = document.querySelector('#filter'),
+      UIguestInput = document.querySelector('#guest');
 
 // LISTENER LOAD CALL
 loadEventListeners();
